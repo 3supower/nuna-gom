@@ -83,3 +83,9 @@ model Inquiry {
   repliedAt DateTime?
   createdAt DateTime @default(now())
 }
+
+model DailyVisit {
+  id    String   @id @default(uuid())
+  date  String   @unique // YYYY-MM-DD
+  count Int      @default(0)
+}

@@ -111,10 +111,17 @@
     },
     "admin": {
         "dashboard": "대시보드",
+        "dashboard_chart_revenue": "매출 추이 (최근 30일)",
+        "dashboard_chart_status": "주문 현황",
+        "dashboard_recent_orders": "최근 주문",
+        "dashboard_top_products": "인기 상품",
+        "dashboard_visits_today": "오늘의 방문자 수",
+        "dashboard_chart_views": "웹사이트 조회수 (최근 30일)",
+        "dashboard_summary_visits": "누적 방문자 수",
+        "total_products": "총 상품 수",
         "products": "상품 관리",
         "orders": "주문 관리",
         "inquiries": "문의 관리",
-        "total_products": "전체 상품",
         "logout": "로그아웃",
         "product_list": {
             "title": "상품 목록",

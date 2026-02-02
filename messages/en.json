@@ -111,6 +111,13 @@
   },
   "admin": {
     "dashboard": "Dashboard",
+    "dashboard_chart_revenue": "Revenue Trend (30 Days)",
+    "dashboard_chart_status": "Order Status",
+    "dashboard_recent_orders": "Recent Orders",
+    "dashboard_top_products": "Top Selling Products",
+    "dashboard_visits_today": "Today's Visits",
+    "dashboard_chart_views": "Website Views (30 Days)",
+    "dashboard_summary_visits": "Total Visits",
     "products": "Products",
     "orders": "Orders",
     "inquiries": "Inquiries",
