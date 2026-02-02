@@ -18,8 +18,10 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { deleteProduct } from '@/app/actions/product'
+import { getDictionary } from '@/lib/i18n'
 
 export default async function ProductsPage() {
+    const dict = await getDictionary()
     const products = await prisma.product.findMany({
         orderBy: { createdAt: 'desc' },
     })
@@ -27,10 +29,10 @@ export default async function ProductsPage() {
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold tracking-tight">Products</h1>
+                <h1 className="text-3xl font-bold tracking-tight">{dict.admin.product_list.title}</h1>
                 <Button asChild>
                     <Link href="/admin/products/new">
-                        <Plus className="mr-2 h-4 w-4" /> Add Product
+                        <Plus className="mr-2 h-4 w-4" /> {dict.admin.product_list.add_new}
                     </Link>
                 </Button>
             </div>
@@ -39,11 +41,11 @@ export default async function ProductsPage() {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Image</TableHead>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Price</TableHead>
-                            <TableHead>Stock / Type</TableHead>
-                            <TableHead className="w-[100px]">Actions</TableHead>
+                            <TableHead>{dict.admin.product_list.th_image}</TableHead>
+                            <TableHead>{dict.admin.product_list.th_name}</TableHead>
+                            <TableHead>{dict.admin.product_list.th_price}</TableHead>
+                            <TableHead>{dict.admin.product_list.th_stock}</TableHead>
+                            <TableHead className="w-[100px]">{dict.admin.product_list.th_actions}</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -59,12 +61,12 @@ export default async function ProductsPage() {
                                     )}
                                 </TableCell>
                                 <TableCell className="font-medium">{product.title}</TableCell>
-                                <TableCell>{product.price.toLocaleString()} KRW</TableCell>
+                                <TableCell>{product.price.toLocaleString()} {dict.product.price_unit}</TableCell>
                                 <TableCell>
                                     {product.madeToOrder ? (
-                                        <span className="text-amber-600 text-xs font-medium">Made to Order</span>
+                                        <span className="text-amber-600 text-xs font-medium">{dict.admin.product_list.made_to_order}</span>
                                     ) : (
-                                        <span>{product.stock} in stock</span>
+                                        <span>{product.stock} {dict.admin.product_list.in_stock}</span>
                                     )}
                                 </TableCell>
                                 <TableCell>
@@ -76,16 +78,16 @@ export default async function ProductsPage() {
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end">
-                                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                            <DropdownMenuLabel>{dict.admin.product_list.th_actions}</DropdownMenuLabel>
                                             <DropdownMenuItem asChild>
                                                 <Link href={`/admin/products/${product.id}`}>
-                                                    <Pencil className="mr-2 h-4 w-4" /> Edit
+                                                    <Pencil className="mr-2 h-4 w-4" /> {dict.admin.product_list.edit}
                                                 </Link>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem className="text-red-600">
                                                 <form action={deleteProduct.bind(null, product.id)} className="w-full flex items-center">
                                                     <button type="submit" className="flex items-center w-full">
-                                                        <Trash className="mr-2 h-4 w-4" /> Delete
+                                                        <Trash className="mr-2 h-4 w-4" /> {dict.admin.product_list.delete}
                                                     </button>
                                                 </form>
                                             </DropdownMenuItem>
@@ -97,7 +99,7 @@ export default async function ProductsPage() {
                         {products.length === 0 && (
                             <TableRow>
                                 <TableCell colSpan={5} className="text-center h-24 text-muted-foreground">
-                                    No products found.
+                                    {dict.admin.product_list.empty}
                                 </TableCell>
                             </TableRow>
                         )}

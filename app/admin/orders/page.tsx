@@ -8,9 +8,26 @@ import {
     TableRow,
 } from '@/components/ui/table'
 import { OrderRow } from '@/components/admin/order-row'
+import { getDictionary } from '@/lib/i18n'
 
-export default async function OrdersPage() {
+import { SearchInput } from '@/components/admin/search-input'
+
+export default async function OrdersPage({
+    searchParams
+}: {
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+    const { q } = await searchParams
+    const search = typeof q === 'string' ? q : undefined
+
+    const dict = await getDictionary()
     const orders = await prisma.order.findMany({
+        where: search ? {
+            OR: [
+                { customerName: { contains: search, mode: 'insensitive' } },
+                { id: { contains: search, mode: 'insensitive' } },
+            ]
+        } : undefined,
         orderBy: { createdAt: 'desc' },
         include: {
             items: {
@@ -24,29 +41,30 @@ export default async function OrdersPage() {
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold tracking-tight">Orders</h1>
+                <h1 className="text-3xl font-bold tracking-tight">{dict.admin.order_list.title}</h1>
+                <SearchInput placeholder={dict.admin.order_list.search_placeholder || "검색..."} />
             </div>
 
             <div className="rounded-md border bg-card">
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Order ID</TableHead>
-                            <TableHead>Customer</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead>Total</TableHead>
-                            <TableHead>Date</TableHead>
-                            <TableHead className="w-[100px]">Actions</TableHead>
+                            <TableHead>{dict.admin.order_list.th_id}</TableHead>
+                            <TableHead>{dict.admin.order_list.th_customer}</TableHead>
+                            <TableHead>{dict.admin.order_list.th_status}</TableHead>
+                            <TableHead>{dict.admin.order_list.th_total}</TableHead>
+                            <TableHead>{dict.admin.order_list.th_date}</TableHead>
+                            <TableHead className="w-[100px]">{dict.admin.order_list.th_actions}</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {orders.map((order: any) => (
-                            <OrderRow key={order.id} order={order} />
+                            <OrderRow key={order.id} order={order} dict={dict} />
                         ))}
                         {orders.length === 0 && (
                             <TableRow>
                                 <TableCell colSpan={6} className="text-center h-24 text-muted-foreground">
-                                    No orders yet.
+                                    {dict.admin.order_list.empty}
                                 </TableCell>
                             </TableRow>
                         )}

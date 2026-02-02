@@ -78,6 +78,8 @@ model Inquiry {
   name      String
   contact   String   // Email or Phone
   content   String
+  answer    String?  // Admin reply
   isReplied Boolean  @default(false)
+  repliedAt DateTime?
   createdAt DateTime @default(now())
 }

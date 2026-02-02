@@ -25,6 +25,20 @@ export const metadata: Metadata = {
     siteName: 'Nuna Gom',
     locale: 'ko_KR',
     type: 'website',
+    images: [
+      {
+        url: '/brand-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Nuna Gom - Handcrafted Knitted Bears',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nuna Gom',
+    description: 'Handcrafted knitted bears with warmth in every loop.',
+    images: ['/brand-image.jpg'],
   },
 }
 

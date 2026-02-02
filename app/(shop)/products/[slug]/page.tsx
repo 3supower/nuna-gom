@@ -20,7 +20,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     }
 
     return (
-        <div className="container px-4 py-12">
+        <div className="container mx-auto px-4 py-12">
             <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
                 {/* Gallery */}
                 <ProductGallery

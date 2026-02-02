@@ -108,5 +108,93 @@
         "Custom-made items cannot be returned or exchanged."
       ]
     }
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "orders": "Orders",
+    "inquiries": "Inquiries",
+    "total_products": "Total Products",
+    "logout": "Logout",
+    "product_list": {
+      "title": "Products",
+      "add_new": "Add Product",
+      "th_image": "Image",
+      "th_name": "Name",
+      "th_price": "Price",
+      "th_stock": "Stock / Type",
+      "th_actions": "Actions",
+      "made_to_order": "Made to Order",
+      "in_stock": "in stock",
+      "edit": "Edit",
+      "delete": "Delete",
+      "empty": "No products found."
+    },
+    "product_form": {
+      "edit_title": "Edit Product",
+      "add_title": "Add Product",
+      "title": "Product Title",
+      "slug": "Slug (URL)",
+      "price": "Price (KRW)",
+      "description": "Description",
+      "images": "Images",
+      "uploading": "Uploading...",
+      "remove": "Remove",
+      "made_to_order": "Made to Order?",
+      "stock": "Stock",
+      "lead_time": "Lead Time (Days)",
+      "update_btn": "Update Product",
+      "create_btn": "Create Product"
+    },
+    "order_list": {
+      "title": "Orders",
+      "search_placeholder": "Search by name or ID...",
+      "th_id": "Order ID",
+      "th_customer": "Customer",
+      "th_status": "Status",
+      "th_total": "Total",
+      "th_date": "Date",
+      "th_actions": "Actions",
+      "empty": "No orders yet.",
+      "view": "View",
+      "print": "Print Order",
+      "send_email": "Send Email",
+      "email_sent": "Email Sent",
+      "sending": "Sending...",
+      "email_subject": "Subject",
+      "email_body": "Message Body",
+      "attach_invoice": "Attach Invoice (PDF)",
+      "send": "Send",
+      "cancel": "Cancel",
+      "details_title": "Order Details",
+      "cust_info": "Customer Info",
+      "ship_addr": "Shipping Address",
+      "message": "Message",
+      "items": "Items",
+      "total": "Total",
+      "status": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "shipped": "Shipped",
+        "delivered": "Delivered",
+        "cancelled": "Cancelled"
+      }
+    },
+    "inquiry_list": {
+      "title": "Inquiries",
+      "th_date": "Date",
+      "th_customer": "Customer",
+      "th_contact": "Contact",
+      "th_message": "Message",
+      "empty": "No inquiries found.",
+      "view": "View & Reply",
+      "details_title": "Inquiry Details",
+      "status_replied": "Replied",
+      "status_pending": "Pending",
+      "answer_label": "Admin Reply",
+      "answer_placeholder": "Write your reply here...",
+      "save_reply": "Save Reply",
+      "saving": "Saving..."
+    }
   }
 }

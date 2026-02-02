@@ -13,7 +13,7 @@ export default async function ProductListPage() {
     })
 
     return (
-        <div className="container px-4 py-8">
+        <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
                 <h1 className="text-3xl font-bold font-serif text-primary">{dict.home.shop_collection}</h1>
                 <p className="text-muted-foreground mt-2">{dict.home.new_arrivals_desc}</p>

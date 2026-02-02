@@ -14,30 +14,37 @@ export default async function HomePage() {
   return (
     <div className="space-y-12 pb-12">
       {/* Hero Section */}
-      <section className="relative h-[500px] flex items-center justify-center bg-[#FDFBF7] text-center px-4 overflow-hidden">
-        {/* Decorative Circle */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-100/30 rounded-full blur-3xl -z-10" />
+      <section className="container mx-auto px-4 py-8 md:py-12 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="order-2 lg:order-1 space-y-6 text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary font-serif leading-tight">
+              {dict.home.hero_title}
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0">
+              {dict.home.hero_desc}
+            </p>
+            <div className="flex gap-4 justify-center lg:justify-start pt-4">
+              <Button size="lg" className="rounded-full px-8" asChild>
+                <Link href="/products">{dict.home.shop_collection}</Link>
+              </Button>
+              <Button size="lg" variant="outline" className="rounded-full px-8" asChild>
+                <Link href="/inquiry">{dict.home.custom_order}</Link>
+              </Button>
+            </div>
+          </div>
 
-        <div className="space-y-6 max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-primary font-serif">
-            {dict.home.hero_title}
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            {dict.home.hero_desc}
-          </p>
-          <div className="flex gap-4 justify-center pt-4">
-            <Button size="lg" className="rounded-full px-8" asChild>
-              <Link href="/products">{dict.home.shop_collection}</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8" asChild>
-              <Link href="/inquiry">{dict.home.custom_order}</Link>
-            </Button>
+          <div className="order-1 lg:order-2 relative aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden bg-muted">
+            <img
+              src="/brand-image.jpg"
+              alt="Nuna Gom Brand Image"
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
+            />
           </div>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section className="container px-4">
+      <section className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-2xl font-bold font-serif text-primary">{dict.home.new_arrivals}</h2>
           <p className="text-muted-foreground mt-2">{dict.home.new_arrivals_desc}</p>
@@ -87,7 +94,7 @@ export default async function HomePage() {
 
       {/* Banner */}
       <section className="bg-primary/5 py-16 text-center">
-        <div className="container px-4">
+        <div className="container mx-auto px-4">
           <h3 className="text-xl font-bold mb-4">{dict.home.made_to_order_title}</h3>
           <p className="max-w-xl mx-auto text-muted-foreground mb-6">
             {dict.home.made_to_order_desc}

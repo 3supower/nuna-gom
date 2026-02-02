@@ -22,9 +22,10 @@ interface ProductFormProps {
         stock: number | null
         leadTimeDays: number | null
     }
+    dict: any
 }
 
-export function ProductForm({ product }: ProductFormProps) {
+export function ProductForm({ product, dict }: ProductFormProps) {
     const isEdit = !!product
     const action = isEdit ? updateProduct.bind(null, product.id) : createProduct
 
@@ -69,35 +70,37 @@ export function ProductForm({ product }: ProductFormProps) {
                         <ChevronLeft className="h-4 w-4" />
                     </Link>
                 </Button>
-                <h1 className="text-3xl font-bold tracking-tight">{isEdit ? 'Edit Product' : 'Add Product'}</h1>
+                <h1 className="text-3xl font-bold tracking-tight">
+                    {isEdit ? dict.admin.product_form.edit_title : dict.admin.product_form.add_title}
+                </h1>
             </div>
 
             <Card>
                 <CardContent className="pt-6">
                     <form action={action} className="space-y-6">
                         <div className="space-y-2">
-                            <Label htmlFor="title">Product Title</Label>
+                            <Label htmlFor="title">{dict.admin.product_form.title}</Label>
                             <Input id="title" name="title" required defaultValue={product?.title} />
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="slug">Slug (URL)</Label>
+                                <Label htmlFor="slug">{dict.admin.product_form.slug}</Label>
                                 <Input id="slug" name="slug" required defaultValue={product?.slug} />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="price">Price (KRW)</Label>
+                                <Label htmlFor="price">{dict.admin.product_form.price}</Label>
                                 <Input id="price" name="price" type="number" required defaultValue={product?.price} />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="description">Description</Label>
+                            <Label htmlFor="description">{dict.admin.product_form.description}</Label>
                             <Textarea id="description" name="description" required rows={5} defaultValue={product?.description} />
                         </div>
 
                         <div className="space-y-4">
-                            <Label>Images</Label>
+                            <Label>{dict.admin.product_form.images}</Label>
 
                             {/* Existing Images */}
                             {images.length > 0 && (
@@ -110,7 +113,7 @@ export function ProductForm({ product }: ProductFormProps) {
                                                 onClick={() => handleRemoveImage(img)}
                                                 className="absolute inset-0 bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                                             >
-                                                Remove
+                                                {dict.admin.product_form.remove}
                                             </button>
                                         </div>
                                     ))}
@@ -126,7 +129,7 @@ export function ProductForm({ product }: ProductFormProps) {
                                     disabled={uploading}
                                     className="max-w-xs"
                                 />
-                                {uploading && <span className="text-sm text-muted-foreground">Uploading...</span>}
+                                {uploading && <span className="text-sm text-muted-foreground">{dict.admin.product_form.uploading}</span>}
                             </div>
 
                             {/* Hidden Input for Server Action */}
@@ -141,22 +144,24 @@ export function ProductForm({ product }: ProductFormProps) {
                                 className="h-4 w-4 rounded border-gray-300"
                                 defaultChecked={product?.madeToOrder}
                             />
-                            <Label htmlFor="madeToOrder">Made to Order?</Label>
+                            <Label htmlFor="madeToOrder">{dict.admin.product_form.made_to_order}</Label>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="stock">Stock</Label>
+                                <Label htmlFor="stock">{dict.admin.product_form.stock}</Label>
                                 <Input id="stock" name="stock" type="number" defaultValue={product?.stock || ''} />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="leadTimeDays">Lead Time (Days)</Label>
+                                <Label htmlFor="leadTimeDays">{dict.admin.product_form.lead_time}</Label>
                                 <Input id="leadTimeDays" name="leadTimeDays" type="number" defaultValue={product?.leadTimeDays || 7} />
                             </div>
                         </div>
 
                         <div className="flex justify-end pt-4">
-                            <Button type="submit">{isEdit ? 'Update Product' : 'Create Product'}</Button>
+                            <Button type="submit">
+                                {isEdit ? dict.admin.product_form.update_btn : dict.admin.product_form.create_btn}
+                            </Button>
                         </div>
                     </form>
                 </CardContent>

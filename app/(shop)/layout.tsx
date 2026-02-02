@@ -11,7 +11,7 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
     return (
         <div className="flex min-h-screen flex-col">
             <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container flex h-16 items-center justify-between px-4">
+                <div className="container mx-auto flex h-16 items-center justify-between px-4">
                     <div className="flex items-center gap-4">
                         <Link href="/" className="font-serif text-xl font-bold tracking-tight text-primary">
                             Nuna Gom
@@ -50,7 +50,7 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
             </main>
 
             <footer className="border-t bg-muted/50 py-8 text-center text-sm text-muted-foreground">
-                <div className="container px-4">
+                <div className="container mx-auto px-4">
                     <p>&copy; {new Date().getFullYear()} {dict.footer.copyright}</p>
                     <div className="mt-2 flex justify-center gap-4">
                         <Link href="/policy/privacy" className="hover:underline">{dict.footer.privacy}</Link>
